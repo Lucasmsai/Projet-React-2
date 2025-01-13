@@ -1,5 +1,6 @@
 import './App.css';
 import Ajoutuser from './composants/Ajoutuser/Ajoutuser.js';
+import Header from './composants/Header/Header.js';
 import { Parallax } from 'react-parallax';
 import axios from "axios";
 import { useEffect, useState } from 'react';
@@ -25,6 +26,7 @@ function App() {
 
   return (
     <>
+      <Header />
       <div className="bg-neutral-600">
       <div className='flex justify-center p-16'>
       < Ajoutuser />
