@@ -2,8 +2,13 @@ import React, { useEffect, useState } from 'react';
 import Ajoutuser from '../composants/Ajoutuser/Ajoutuser.js';
 import { Parallax } from 'react-parallax';
 import axios from 'axios';
+import jwtDecode from "jwt-decode";
 
 export default function HomePage(){
+
+
+
+
   const [users, setUsers] = useState([]);
 
   // URL de l'API (assurez-vous de définir apiUrl correctement)
@@ -23,6 +28,10 @@ export default function HomePage(){
   }, []);
 
   return (
+    <>
+
+
+
     <div className="bg-neutral-600">
       {/* Section Ajoutuser */}
       <div className="flex justify-center p-16">
@@ -71,5 +80,6 @@ export default function HomePage(){
         </button>
       </div>
     </div>
+    </>
   );
 };

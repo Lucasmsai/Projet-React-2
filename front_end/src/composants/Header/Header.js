@@ -1,28 +1,54 @@
 import React from 'react'
 import "./Header.css";
 import { Link } from 'react-router-dom';
+import { useLocation, useNavigate } from "react-router-dom";
+
 
 export default function Header() {
+  const location = useLocation();
+  const isAuthPage = location.pathname === "/login" || location.pathname === "/signup";
+  const isLogged = !!localStorage.getItem("token"); // retourne true si le token existe, sinon false
+
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    // Supprimer le token du localStorage
+    console.log("Token avant suppression:", localStorage.getItem("token"));
+    localStorage.removeItem("token");
+    console.log("Token apres suppression:", localStorage.getItem("token"));
+
+    // Rediriger l'utilisateur vers la page d'accueil
+    navigate("/");
+  };
+
+  
+
   return (
   <>
-  <div className='p-4 bg-white flex items-center justify-between'>
-    <div className="flex-1 text-center font-['kanit'] font-semibold text-2xl">
+  
+  <div className="bg-white h-[50px] mx-auto relative">
+    <div className="font-['kanit'] font-semibold text-2xl text-center absolute top-2 left-0 right-0">
       E-Magaz.com
     </div>
-    <Link to="/login">
-      <button class="cssbuttons-io">
-        <span className=" font-['kanit'] ">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 0h24v24H0z" fill="none"></path>
-            <path d="M24 12l-5.657 5.657-1.414-1.414L21.172 12l-4.243-4.243 1.414-1.414L24 12zM2.828 12l4.243 4.243-1.414 1.414L0 12l5.657-5.657L7.07 7.757 2.828 12zm6.96 9H7.66l6.552-18h2.128L9.788 21z" fill="currentColor"></path>
-          </svg>
-          Connexion
-        </span>
-    </button>
-
-    </Link>
     
-  </div>
+    <div className="absolute top-0 right-2 p-0">
+    {isLogged ? (
+        <button className="form-btn" onClick={handleLogout}>
+          Déconnexion
+        </button>
+      ) : (
+        !isAuthPage && (
+          <Link to="/login">
+            <button className="form-btn">
+              Connexion
+            </button>
+          </Link>
+        )
+      )}
+
+
+    
+    </div>
+  </div>  
 
    </>
   )
