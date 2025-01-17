@@ -61,7 +61,7 @@ return(
     
       <div class="form-container">  
         <div class="logo-container">
-          Espace Inscription
+          Espace Connexion
         </div>
   
         <form class="form" onSubmit={Submit}>
@@ -84,6 +84,8 @@ return(
         <p class="signup-link">
           Vous n'avez pas de compte ?
           <Link to="/signup">Inscrivez vous</Link>
+          
+          <Link to="/forgot-password">Mot de passe oublié ?</Link>
         </p>
       </div>
   

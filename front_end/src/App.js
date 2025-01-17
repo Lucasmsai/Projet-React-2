@@ -4,6 +4,7 @@ import LoginPage from './pages/LoginPage.js'; // Page de connexion
 import HomePage from './pages/HomePage.js';
 import SignupPage from './pages/SignupPage.js';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import ForgotPasswordPage from './pages/ForgotPasswordPage.js';
 
 function App() {
 
